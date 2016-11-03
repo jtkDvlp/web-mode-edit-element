@@ -49,9 +49,34 @@
   (html-element-edit-utils-x-position
    'web-mode-element-sibling-previous))
 
+(defun html-element-edit-elements-sibling-previous-p ()
+  (let ((parent-position
+         (web-mode-element-parent-position))
+
+        (tag-prev-position
+         (html-element-edit-utils-x-position
+          (lambda ()
+            (web-mode-element-beginning)
+            (web-mode-tag-previous)
+            (web-mode-element-beginning)))))
+
+    (not (= parent-position tag-prev-position))))
+
 (defun html-element-edit-elements-sibling-next-position ()
   (html-element-edit-utils-x-position
    'web-mode-element-sibling-next))
+
+(defun html-element-edit-elements-sibling-next-p ()
+  (let ((parent-position
+         (web-mode-element-parent-position))
+
+        (tag-next-position
+         (html-element-edit-utils-x-position
+          (lambda ()
+            (html-element-edit-elements-end-inside)
+            (web-mode-tag-next)))))
+
+    (not (= parent-position tag-next-position))))
 
 (provide 'html-element-edit-elements)
 ;;; html-element-edit-elements.el ends here
