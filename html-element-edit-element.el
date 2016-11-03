@@ -9,6 +9,7 @@
 ;; Code:
 
 (require 'web-mode)
+(require 'html-element-edit-utils)
 
 ;; General
 (defun html-element-edit-elements-end-inside ()
@@ -42,6 +43,15 @@
     (html-element-edit-elements-end-inside)
     (web-mode-tag-next)
     (html-element-edit-elements-direct-before-insert content)))
+
+;; Sibling
+(defun html-element-edit-elements-sibling-previous-position ()
+  (html-element-edit-utils-x-position
+   'web-mode-element-sibling-previous))
+
+(defun html-element-edit-elements-sibling-next-position ()
+  (html-element-edit-utils-x-position
+   'web-mode-element-sibling-next))
 
 (provide 'html-element-edit-elements)
 ;;; html-element-edit-elements.el ends here
