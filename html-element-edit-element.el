@@ -18,31 +18,31 @@
   (backward-char))
 
 ;; Insert
-(defun html-element-edit-elements-direct-before-insert (content)
+(defun html-element-edit-elements-insert-direct-before (content)
   (interactive "sContent: ")
   (save-excursion
     (web-mode-tag-beginning)
     (insert content)))
 
-(defun html-element-edit-elements-before-insert (content)
+(defun html-element-edit-elements-insert-before (content)
   (interactive "sContent: ")
   (save-excursion
     (web-mode-element-beginning)
     (web-mode-tag-previous)
-    (html-element-edit-elements-direct-after-insert content)))
+    (html-element-edit-elements-insert-direct-after content)))
 
-(defun html-element-edit-elements-direct-after-insert (content)
+(defun html-element-edit-elements-insert-direct-after (content)
   (interactive "sContent: ")
   (save-excursion
     (web-mode-tag-end)
     (insert content)))
 
-(defun html-element-edit-elements-after-insert (content)
+(defun html-element-edit-elements-insert-after (content)
   (interactive "sContent: ")
   (save-excursion
     (html-element-edit-elements-end-inside)
     (web-mode-tag-next)
-    (html-element-edit-elements-direct-before-insert content)))
+    (html-element-edit-elements-insert-direct-before)))
 
 ;; Sibling
 (defun html-element-edit-elements-sibling-previous-position ()
@@ -135,7 +135,7 @@
       (web-mode-tag-end))))
 
 ;; Kill
-(defun html-element-edit-elements-kill-previous-siblings ()
+(defun html-element-edit-elements-kill-siblings-previous ()
   (interactive)
   (save-excursion
     (web-mode-element-beginning)
@@ -150,7 +150,7 @@
      (region-end))
     (insert "\n")))
 
-(defun html-element-edit-elements-kill-next-siblings ()
+(defun html-element-edit-elements-kill-siblings-next ()
   (interactive)
   (save-excursion
     (set-mark (+ 1 (web-mode-element-end-position)))
@@ -168,8 +168,8 @@
 
 (defun html-element-edit-elements-kill-siblings ()
   (interactive)
-  (html-element-edit-elements-kill-previous-siblings)
-  (html-element-edit-elements-kill-next-siblings))
+  (html-element-edit-elements-kill-siblings-previous)
+  (html-element-edit-elements-kill-siblings-next))
 
 ;; Edit
 (defun html-element-edit-elements-transpose-backward ()
@@ -227,7 +227,7 @@
 
       (save-excursion
         (web-mode-element-end)
-        (html-element-edit-elements-direct-after-insert content)))))
+        (html-element-edit-elements-insert-direct-after content)))))
 
 (defun html-element-edit-elements-contract-over-border ()
   (interactive)
