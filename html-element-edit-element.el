@@ -91,6 +91,9 @@
 (defun html-element-edit-elements-parent-p ()
   (web-mode-element-parent-position))
 
+(defun html-element-edit-elements-root-p ()
+  (not (html-element-edit-elements-parent-p)))
+
 ;; Child
 (defun html-element-edit-elements-child-p ()
   (let ((end-tag-position
@@ -155,6 +158,14 @@
         (html-element-edit-elements-end-inside)
         (web-mode-tag-beginning)
         (insert content)))))
+
+(defun html-element-edit-elements-expand-over-border ()
+  (interactive)
+  (save-excursion
+    (while (and (not (html-element-edit-elements-root-p))
+                (not (html-element-edit-elements-expand-p)))
+      (web-mode-element-parent))
+    (html-element-edit-elements-expand)))
 
 (provide 'html-element-edit-elements)
 ;;; html-element-edit-elements.el ends here
