@@ -245,5 +245,10 @@
       (web-mode-element-parent)
       (web-mode-element-vanish ARGS))))
 
+(defun html-element-edit-elements-raise (&optional ARGS)
+  (interactive "p")
+  (html-element-edit-elements-kill-siblings)
+  (html-element-edit-elements-dissolve ARGS))
+
 (provide 'html-element-edit-elements)
 ;;; html-element-edit-elements.el ends here
