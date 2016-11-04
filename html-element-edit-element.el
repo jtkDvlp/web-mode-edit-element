@@ -51,7 +51,11 @@
 
 (defun html-element-edit-elements-sibling-previous-p ()
   (let ((parent-position
-         (web-mode-element-parent-position))
+         (html-element-edit-utils-fnil
+          (save-excursion
+            (web-mode-element-beginning)
+            (web-mode-element-parent-position))
+          'point))
 
         (tag-prev-position
          (html-element-edit-utils-x-position
@@ -68,7 +72,11 @@
 
 (defun html-element-edit-elements-sibling-next-p ()
   (let ((parent-position
-         (web-mode-element-parent-position))
+         (html-element-edit-utils-fnil
+          (save-excursion
+            (web-mode-element-beginning)
+            (web-mode-element-parent-position))
+          'point))
 
         (tag-next-position
          (html-element-edit-utils-x-position
@@ -78,6 +86,10 @@
             (web-mode-element-beginning)))))
 
     (not (= parent-position tag-next-position))))
+
+;; Parent
+(defun html-element-edit-elements-parent-p ()
+  (web-mode-element-parent-position))
 
 ;; Child
 (defun html-element-edit-elements-child-p ()
