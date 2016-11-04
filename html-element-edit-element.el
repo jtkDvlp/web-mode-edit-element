@@ -134,6 +134,43 @@
       (web-mode-element-beginning)
       (web-mode-tag-end))))
 
+;; Kill
+(defun html-element-edit-elements-kill-previous-siblings ()
+  (interactive)
+  (save-excursion
+    (web-mode-element-beginning)
+    (set-mark (point))
+    (if (html-element-edit-elements-parent-p)
+        (progn
+          (web-mode-element-parent)
+          (web-mode-tag-end))
+      (beginning-of-buffer))
+    (kill-region
+     (region-beginning)
+     (region-end))
+    (insert "\n")))
+
+(defun html-element-edit-elements-kill-next-siblings ()
+  (interactive)
+  (save-excursion
+    (set-mark (+ 1 (web-mode-element-end-position)))
+    (if (html-element-edit-elements-parent-p)
+        (progn
+          (web-mode-element-beginning)
+          (web-mode-element-parent)
+          (html-element-edit-elements-end-inside)
+          (web-mode-tag-beginning))
+      (end-of-buffer))
+    (kill-region
+     (region-beginning)
+     (region-end))
+    (insert "\n")))
+
+(defun html-element-edit-elements-kill-siblings ()
+  (interactive)
+  (html-element-edit-elements-kill-previous-siblings)
+  (html-element-edit-elements-kill-next-siblings))
+
 ;; Edit
 (defun html-element-edit-elements-transpose-backward ()
   (interactive)
