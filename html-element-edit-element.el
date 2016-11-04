@@ -114,5 +114,13 @@
       (web-mode-element-beginning)
       (web-mode-tag-end))))
 
+;; Edit
+(defun html-element-edit-elements-transpose-backward ()
+  (interactive)
+  (when (html-element-edit-elements-sibling-previous-p)
+    (save-excursion
+      (web-mode-element-sibling-previous)
+      (web-mode-element-transpose))))
+
 (provide 'html-element-edit-elements)
 ;;; html-element-edit-elements.el ends here
