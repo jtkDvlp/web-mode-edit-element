@@ -89,7 +89,9 @@
 
 ;; Parent
 (defun html-element-edit-elements-parent-p ()
-  (web-mode-element-parent-position))
+  (and (web-mode-element-parent-position)
+       (not (= (web-mode-element-parent-position)
+               (web-mode-element-beginning-position)))))
 
 (defun html-element-edit-elements-root-p ()
   (not (html-element-edit-elements-parent-p)))
@@ -195,6 +197,14 @@
                 (not (html-element-edit-elements-contract-p)))
       (web-mode-element-parent))
     (html-element-edit-elements-contract)))
+
+(defun html-element-edit-elements-dissolve (&optional ARGS)
+  (interactive "p")
+  (when (html-element-edit-elements-parent-p)
+    (save-excursion
+      (web-mode-element-beginning)
+      (web-mode-element-parent)
+      (web-mode-element-vanish ARGS))))
 
 (provide 'html-element-edit-elements)
 ;;; html-element-edit-elements.el ends here
