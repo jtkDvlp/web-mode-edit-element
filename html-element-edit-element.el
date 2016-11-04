@@ -6,7 +6,7 @@
 ;; License: GNU General Public License >= 2
 ;; Distribution: This file is not part of Emacs
 
-;; Code:
+;;; Code:
 
 (require 'web-mode)
 (require 'html-element-edit-utils)
