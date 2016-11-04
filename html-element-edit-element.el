@@ -89,9 +89,11 @@
 
 ;; Parent
 (defun html-element-edit-elements-parent-p ()
-  (and (web-mode-element-parent-position)
-       (not (= (web-mode-element-parent-position)
-               (web-mode-element-beginning-position)))))
+  (save-excursion
+    (web-mode-element-beginning)
+    (and (web-mode-element-parent-position)
+         (not (= (web-mode-element-parent-position)
+                 (web-mode-element-beginning-position))))))
 
 (defun html-element-edit-elements-root-p ()
   (not (html-element-edit-elements-parent-p)))
