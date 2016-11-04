@@ -162,7 +162,7 @@
 (defun html-element-edit-elements-expand-over-border ()
   (interactive)
   (save-excursion
-    (while (and (not (html-element-edit-elements-root-p))
+    (while (and (html-element-edit-elements-parent-p)
                 (not (html-element-edit-elements-expand-p)))
       (web-mode-element-parent))
     (html-element-edit-elements-expand)))
