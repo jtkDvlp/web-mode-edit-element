@@ -78,5 +78,41 @@
 
     (not (= parent-position tag-next-position))))
 
+;; Child
+(defun html-element-edit-elements-child-p ()
+  (let ((end-tag-position
+         (html-element-edit-utils-x-position
+          (lambda ()
+            (html-element-edit-elements-end-inside)
+            (web-mode-tag-beginning))))
+
+        (child-position
+         (save-excursion
+           (web-mode-element-beginning)
+           (web-mode-tag-next-position))))
+
+    (not (= end-tag-position child-position))))
+
+(defun html-element-edit-elements-child-last ()
+  (interactive)
+  (if (html-element-edit-elements-child-p)
+      (progn
+        (html-element-edit-elements-end-inside)
+        (web-mode-tag-beginning)
+        (web-mode-tag-previous))
+    (progn
+      (web-mode-element-beginning)
+      (web-mode-tag-end))))
+
+(defun html-element-edit-elements-child-first ()
+  (interactive)
+  (if (html-element-edit-elements-child-p)
+      (progn
+        (web-mode-element-beginning)
+        (web-mode-tag-next))
+    (progn
+      (web-mode-element-beginning)
+      (web-mode-tag-end))))
+
 (provide 'html-element-edit-elements)
 ;;; html-element-edit-elements.el ends here
