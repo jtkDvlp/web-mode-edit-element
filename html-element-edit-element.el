@@ -167,5 +167,34 @@
       (web-mode-element-parent))
     (html-element-edit-elements-expand)))
 
+(defun html-element-edit-elements-contract-p ()
+  (html-element-edit-elements-child-p))
+
+(defun html-element-edit-elements-contract ()
+  (interactive)
+  (when (html-element-edit-elements-contract-p)
+    (let ((content
+           (save-excursion
+             (html-element-edit-elements-child-last)
+             (web-mode-element-beginning)
+             (web-mode-tag-previous)
+             (web-mode-tag-end)
+             (set-mark (point))
+             (web-mode-tag-next)
+             (web-mode-element-end)
+             (html-element-edit-utils-kill-region))))
+
+      (save-excursion
+        (web-mode-element-end)
+        (html-element-edit-elements-direct-after-insert content)))))
+
+(defun html-element-edit-elements-contract-over-border ()
+  (interactive)
+  (save-excursion
+    (while (and (html-element-edit-elements-parent-p)
+                (not (html-element-edit-elements-contract-p)))
+      (web-mode-element-parent))
+    (html-element-edit-elements-contract)))
+
 (provide 'html-element-edit-elements)
 ;;; html-element-edit-elements.el ends here
