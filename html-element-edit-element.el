@@ -74,7 +74,8 @@
          (html-element-edit-utils-x-position
           (lambda ()
             (html-element-edit-elements-end-inside)
-            (web-mode-tag-next)))))
+            (web-mode-tag-next)
+            (web-mode-element-beginning)))))
 
     (not (= parent-position tag-next-position))))
 
@@ -121,6 +122,27 @@
     (save-excursion
       (web-mode-element-sibling-previous)
       (web-mode-element-transpose))))
+
+(defun html-element-edit-elements-expand-p ()
+  (html-element-edit-elements-sibling-next-p))
+
+(defun html-element-edit-elements-expand ()
+  (interactive)
+  (when (html-element-edit-elements-expand-p)
+    (let ((content
+           (concat
+            (string-trim-left
+             (save-excursion
+               (web-mode-element-end)
+               (set-mark (point))
+               (web-mode-tag-next)
+               (web-mode-element-end)
+               (html-element-edit-utils-kill-region)))
+            "\n")))
+      (save-excursion
+        (html-element-edit-elements-end-inside)
+        (web-mode-tag-beginning)
+        (insert content)))))
 
 (provide 'html-element-edit-elements)
 ;;; html-element-edit-elements.el ends here
