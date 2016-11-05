@@ -16,9 +16,65 @@
 
 ;;; Code:
 
-(defgroup html-element-edit nil
-  "will follow"
-  :group 'languages)
+(require 'web-mode)
+(require 'html-element-edit-attributes)
+(require 'html-element-edit-elements)
 
-(provide 'html-element-edit)
+(defvar html-element-edit-minor-mode-map
+  (make-keymap)
+  "html-element-edit-minor-mode keymap")
+
+(define-minor-mode html-element-edit-minor-mode
+  "Minor mode to provide key-bindings for html-element-edit functions"
+  nil " html-elemenet-edit" 'html-element-edit-minor-mode-map)
+
+(let ((bindings
+       '(;; General
+         ("C-(" web-mode-element-wrap)
+         ("M-(" web-mode-element-rename)
+
+         ;; Elements
+         ("C-<left>" web-mode-element-previous)
+         ("C-<right>" web-mode-element-next)
+
+         ("M-<left>" html-element-edit-elements-contract-over-border)
+         ("M-<right>" html-element-edit-elements-expand-over-border)
+
+         ("C-M-<left>" html-element-edit-elements-transpose-backward)
+         ("C-M-<right>" web-mode-element-transpose)
+
+         ("C-<up>" web-mode-element-beginning)
+         ("C-<down>" web-mode-tag-match)
+
+         ("C-S-<up>" web-mode-element-parent)
+         ("C-S-<down>" web-mode-element-next)
+
+         ("M-<up>" html-element-edit-elements-dissolve)
+         ("M-<down>" html-element-edit-elements-raise)
+
+         ("C-M-<up>" web-mode-element-content-select)
+         ("C-M-<down>" web-mode-element-vanish)
+
+         ("C-k" web-mode-element-kill)
+         ("C-S-k" html-element-edit-elements-kill-siblings)
+         ("M-k" html-element-edit-elements-kill-siblings-previous)
+         ("M-S-k" html-element-edit-elements-kill-siblings-next)
+
+         ;; Attributes
+         ("C-S-<left>" web-mode-attribute-previous)
+         ("C-S-<right>" web-mode-attribute-next)
+
+         ("C-M-S-<left>" html-element-edit-attributes-transpose-backward)
+         ("C-M-S-<right>" web-mode-attribute-transpose)
+
+         ("C-M-S-<up>" web-mode-attribute-beginning)
+         ("C-M-S-<down>" html-element-edit-attributes-end-inside)
+
+         ("C-M-S-k" web-mode-attribute-kill))))
+  (dolist (binding bindings)
+    (define-key html-element-edit-minor-mode-map
+      (kbd (car binding))
+      (car (cdr binding))))
+
+  (provide 'html-element-edit))
 ;;; html-element-edit.el ends here
