@@ -20,31 +20,31 @@ General |
 C-( | web-mode-element-wrap
 M-( | web-mode-element-rename
 Elements |
-C-<left> | web-mode-element-previous
-C-<right> | web-mode-element-next
-M-<left> | html-element-edit-elements-contract-over-border
-M-<right> | html-element-edit-elements-expand-over-border
-C-M-<left> | html-element-edit-elements-transpose-backward
-C-M-<right> | web-mode-element-transpose
-C-<up> | web-mode-element-beginning
-C-<down> | web-mode-tag-match
-C-S-<up> | web-mode-element-parent
-C-S-<down> | web-mode-element-next
-M-<up> | html-element-edit-elements-dissolve
-M-<down> | html-element-edit-elements-raise
-C-M-<up> | web-mode-element-content-select
-C-M-<down> | web-mode-element-vanish
+C-&ltleft&gt; | web-mode-element-previous
+C-&ltright&gt; | web-mode-element-next
+M-&ltleft&gt; | html-element-edit-elements-contract-over-border
+M-&ltright&gt; | html-element-edit-elements-expand-over-border
+C-M-&ltleft&gt; | html-element-edit-elements-transpose-backward
+C-M-&ltright&gt; | web-mode-element-transpose
+C-&ltup&gt; | web-mode-element-beginning
+C-&ltdown&gt; | web-mode-tag-match
+C-S-&ltup&gt; | web-mode-element-parent
+C-S-&ltdown&gt; | web-mode-element-next
+M-&ltup&gt; | html-element-edit-elements-dissolve
+M-&ltdown&gt; | html-element-edit-elements-raise
+C-M-&ltup&gt; | web-mode-element-content-select
+C-M-&ltdown&gt; | web-mode-element-vanish
 C-k | web-mode-element-kill
 C-S-k | html-element-edit-elements-kill-siblings
 M-k | html-element-edit-elements-kill-siblings-previous
 M-S-k | html-element-edit-elements-kill-siblings-next
 Attributes |
-C-S-<left> | web-mode-attribute-previous
-C-S-<right> | web-mode-attribute-next
-C-M-S-<left> | html-element-edit-attributes-transpose-backward
-C-M-S-<right> | web-mode-attribute-transpose
-C-M-S-<up> | web-mode-attribute-beginning
-C-M-S-<down> | html-element-edit-attributes-end-inside
+C-S-&ltleft&gt; | web-mode-attribute-previous
+C-S-&ltright&gt; | web-mode-attribute-next
+C-M-S-&ltleft&gt; | html-element-edit-attributes-transpose-backward
+C-M-S-&ltright&gt; | web-mode-attribute-transpose
+C-M-S-&ltup&gt; | web-mode-attribute-beginning
+C-M-S-&ltdown&gt; | html-element-edit-attributes-end-inside
 C-M-S-k | web-mode-attribute-kill
 
 ## Appendix
