@@ -1,14 +1,14 @@
 # HTML-Element Edit [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://img.shields.io/badge/License-GPL%20v2-blue.svg)
-HTML-Element Edit is a smart enhancement for the Emacs-Package ["web-mode"](https://github.com/fxbois/web-mode) inspired by the packages [ParEdit](https://www.emacswiki.org/emacs/ParEdit) and [Paxedit](https://github.com/promethial/paxedit).
+HTML-Element Edit is a smart enhancement for the Emacs-Package [web-mode](https://github.com/fxbois/web-mode) inspired by the packages [ParEdit](https://www.emacswiki.org/emacs/ParEdit) and [Paxedit](https://github.com/promethial/paxedit).
 
-It provides a few helper-functions for attribute- and element-handling based on the functions given by ["web-mode"](https://github.com/fxbois/web-mode). Futher more it provides functions for slurping, barfing, dissolving, raise ... inspired by [ParEdit](https://www.emacswiki.org/emacs/ParEdit) and [Paxedit](https://github.com/promethial/paxedit). Last but not least this package includes a minor mode to provide an keymap with default bindings.
+It provides a few helper-functions for attribute- and element-handling based on the functions given by [web-mode](https://github.com/fxbois/web-mode). Further more it provides functions for slurping, barfing, dissolving, raising ... elements inspired by [ParEdit](https://www.emacswiki.org/emacs/ParEdit) and [Paxedit](https://github.com/promethial/paxedit). Last but not least this package includes a minor mode to provide a keymap with default bindings.
 
 ## Getting started
 ### Get it
 - Manually download it and [set up your load path](http://www.emacswiki.org/emacs/InstallingPackages).
 
 ### Usage
-```
+```clojure
 (require 'html-element-edit)
 (add-hook 'web-mode-hook 'html-element-edit-minor-mode)
 ```
@@ -16,10 +16,10 @@ It provides a few helper-functions for attribute- and element-handling based on 
 ### Keymap
 Shortcut | Command
 --- | ---
-General |
+**General** |
 C-( | web-mode-element-wrap
 M-( | web-mode-element-rename
-Elements |
+**Elements** |
 C-&lt;left&gt; | web-mode-element-previous
 C-&lt;right&gt; | web-mode-element-next
 M-&lt;left&gt; | html-element-edit-elements-contract-over-border
@@ -38,7 +38,7 @@ C-k | web-mode-element-kill
 C-S-k | html-element-edit-elements-kill-siblings
 M-k | html-element-edit-elements-kill-siblings-previous
 M-S-k | html-element-edit-elements-kill-siblings-next
-Attributes |
+**Attributes** |
 C-S-&lt;left&gt; | web-mode-attribute-previous
 C-S-&lt;right&gt; | web-mode-attribute-next
 C-M-S-&lt;left&gt; | html-element-edit-attributes-transpose-backward
