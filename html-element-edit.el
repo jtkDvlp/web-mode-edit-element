@@ -7,8 +7,8 @@
 ;; Homepage: https://github.com/jtkDvlp/html-element-edit
 ;; License: GNU General Public License >= 2
 ;; Distribution: This file is not part of Emacs
-;; Keywords: html web-mode paredit
-;; Package-Requires: ((web-mode))
+;; Keywords: languages convenience
+;; Package-Requires: ((web-mode "14"))
 
 ;;; Commentary:
 
