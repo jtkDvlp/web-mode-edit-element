@@ -1,4 +1,4 @@
-;;; html-element-edit-attributes.el
+;;; web-mode-edit-element-attributes.el
 
 ;; Copyright 2016 Julian T. Knabenschuh
 
@@ -10,17 +10,17 @@
 
 (require 'web-mode)
 
-(defun html-element-edit-attributes-end-inside ()
+(defun web-mode-edit-element-attributes-end-inside ()
   (interactive)
   (web-mode-attribute-end)
   (backward-char))
 
-(defun html-element-edit-attributes-transpose-backward ()
+(defun web-mode-edit-element-attributes-transpose-backward ()
   (interactive)
   (save-excursion
     (web-mode-attribute-beginning)
     (web-mode-attribute-previous)
     (web-mode-attribute-transpose)))
 
-(provide 'html-element-edit-attributes)
-;;; html-element-edit-attributes.el ends here
+(provide 'web-mode-edit-element-attributes)
+;;; web-mode-edit-element-attributes.el ends here

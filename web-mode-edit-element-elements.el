@@ -1,4 +1,4 @@
-;;; html-element-edit-elements.el
+;;; web-mode-edit-element-elements.el
 
 ;; Copyright 2016 Julian T. Knabenschuh
 
@@ -9,56 +9,56 @@
 ;;; Code:
 
 (require 'web-mode)
-(require 'html-element-edit-utils)
+(require 'web-mode-edit-element-utils)
 
 ;; General
-(defun html-element-edit-elements-end-inside ()
+(defun web-mode-edit-element-elements-end-inside ()
   (interactive)
   (web-mode-element-end)
   (backward-char))
 
 ;; Insert
-(defun html-element-edit-elements-insert-direct-before (content)
+(defun web-mode-edit-element-elements-insert-direct-before (content)
   (interactive "sContent: ")
   (save-excursion
     (web-mode-tag-beginning)
     (insert content)))
 
-(defun html-element-edit-elements-insert-before (content)
+(defun web-mode-edit-element-elements-insert-before (content)
   (interactive "sContent: ")
   (save-excursion
     (web-mode-element-beginning)
     (web-mode-tag-previous)
-    (html-element-edit-elements-insert-direct-after content)))
+    (web-mode-edit-element-elements-insert-direct-after content)))
 
-(defun html-element-edit-elements-insert-direct-after (content)
+(defun web-mode-edit-element-elements-insert-direct-after (content)
   (interactive "sContent: ")
   (save-excursion
     (web-mode-tag-end)
     (insert content)))
 
-(defun html-element-edit-elements-insert-after (content)
+(defun web-mode-edit-element-elements-insert-after (content)
   (interactive "sContent: ")
   (save-excursion
-    (html-element-edit-elements-end-inside)
+    (web-mode-edit-element-elements-end-inside)
     (web-mode-tag-next)
-    (html-element-edit-elements-insert-direct-before)))
+    (web-mode-edit-element-elements-insert-direct-before)))
 
 ;; Sibling
-(defun html-element-edit-elements-sibling-previous-position ()
-  (html-element-edit-utils-x-position
+(defun web-mode-edit-element-elements-sibling-previous-position ()
+  (web-mode-edit-element-utils-x-position
    'web-mode-element-sibling-previous))
 
-(defun html-element-edit-elements-sibling-previous-p ()
+(defun web-mode-edit-element-elements-sibling-previous-p ()
   (let ((parent-position
-         (html-element-edit-utils-fnil
+         (web-mode-edit-element-utils-fnil
           (save-excursion
             (web-mode-element-beginning)
             (web-mode-element-parent-position))
           'point))
 
         (tag-prev-position
-         (html-element-edit-utils-x-position
+         (web-mode-edit-element-utils-x-position
           (lambda ()
             (web-mode-element-beginning)
             (web-mode-tag-previous)
@@ -66,44 +66,44 @@
 
     (not (= parent-position tag-prev-position))))
 
-(defun html-element-edit-elements-sibling-next-position ()
-  (html-element-edit-utils-x-position
+(defun web-mode-edit-element-elements-sibling-next-position ()
+  (web-mode-edit-element-utils-x-position
    'web-mode-element-sibling-next))
 
-(defun html-element-edit-elements-sibling-next-p ()
+(defun web-mode-edit-element-elements-sibling-next-p ()
   (let ((parent-position
-         (html-element-edit-utils-fnil
+         (web-mode-edit-element-utils-fnil
           (save-excursion
             (web-mode-element-beginning)
             (web-mode-element-parent-position))
           'point))
 
         (tag-next-position
-         (html-element-edit-utils-x-position
+         (web-mode-edit-element-utils-x-position
           (lambda ()
-            (html-element-edit-elements-end-inside)
+            (web-mode-edit-element-elements-end-inside)
             (web-mode-tag-next)
             (web-mode-element-beginning)))))
 
     (not (= parent-position tag-next-position))))
 
 ;; Parent
-(defun html-element-edit-elements-parent-p ()
+(defun web-mode-edit-element-elements-parent-p ()
   (save-excursion
     (web-mode-element-beginning)
     (and (web-mode-element-parent-position)
          (not (= (web-mode-element-parent-position)
                  (web-mode-element-beginning-position))))))
 
-(defun html-element-edit-elements-root-p ()
-  (not (html-element-edit-elements-parent-p)))
+(defun web-mode-edit-element-elements-root-p ()
+  (not (web-mode-edit-element-elements-parent-p)))
 
 ;; Child
-(defun html-element-edit-elements-child-p ()
+(defun web-mode-edit-element-elements-child-p ()
   (let ((end-tag-position
-         (html-element-edit-utils-x-position
+         (web-mode-edit-element-utils-x-position
           (lambda ()
-            (html-element-edit-elements-end-inside)
+            (web-mode-edit-element-elements-end-inside)
             (web-mode-tag-beginning))))
 
         (child-position
@@ -113,20 +113,20 @@
 
     (not (= end-tag-position child-position))))
 
-(defun html-element-edit-elements-child-last ()
+(defun web-mode-edit-element-elements-child-last ()
   (interactive)
-  (if (html-element-edit-elements-child-p)
+  (if (web-mode-edit-element-elements-child-p)
       (progn
-        (html-element-edit-elements-end-inside)
+        (web-mode-edit-element-elements-end-inside)
         (web-mode-tag-beginning)
         (web-mode-tag-previous))
     (progn
       (web-mode-element-beginning)
       (web-mode-tag-end))))
 
-(defun html-element-edit-elements-child-first ()
+(defun web-mode-edit-element-elements-child-first ()
   (interactive)
-  (if (html-element-edit-elements-child-p)
+  (if (web-mode-edit-element-elements-child-p)
       (progn
         (web-mode-element-beginning)
         (web-mode-tag-next))
@@ -135,12 +135,12 @@
       (web-mode-tag-end))))
 
 ;; Kill
-(defun html-element-edit-elements-kill-siblings-previous ()
+(defun web-mode-edit-element-elements-kill-siblings-previous ()
   (interactive)
   (save-excursion
     (web-mode-element-beginning)
     (set-mark (point))
-    (if (html-element-edit-elements-parent-p)
+    (if (web-mode-edit-element-elements-parent-p)
         (progn
           (web-mode-element-parent)
           (web-mode-tag-end))
@@ -150,15 +150,15 @@
      (region-end))
     (insert "\n")))
 
-(defun html-element-edit-elements-kill-siblings-next ()
+(defun web-mode-edit-element-elements-kill-siblings-next ()
   (interactive)
   (save-excursion
     (set-mark (+ 1 (web-mode-element-end-position)))
-    (if (html-element-edit-elements-parent-p)
+    (if (web-mode-edit-element-elements-parent-p)
         (progn
           (web-mode-element-beginning)
           (web-mode-element-parent)
-          (html-element-edit-elements-end-inside)
+          (web-mode-edit-element-elements-end-inside)
           (web-mode-tag-beginning))
       (end-of-buffer))
     (kill-region
@@ -166,25 +166,25 @@
      (region-end))
     (insert "\n")))
 
-(defun html-element-edit-elements-kill-siblings ()
+(defun web-mode-edit-element-elements-kill-siblings ()
   (interactive)
-  (html-element-edit-elements-kill-siblings-previous)
-  (html-element-edit-elements-kill-siblings-next))
+  (web-mode-edit-element-elements-kill-siblings-previous)
+  (web-mode-edit-element-elements-kill-siblings-next))
 
 ;; Edit
-(defun html-element-edit-elements-transpose-backward ()
+(defun web-mode-edit-element-elements-transpose-backward ()
   (interactive)
-  (when (html-element-edit-elements-sibling-previous-p)
+  (when (web-mode-edit-element-elements-sibling-previous-p)
     (save-excursion
       (web-mode-element-sibling-previous)
       (web-mode-element-transpose))))
 
-(defun html-element-edit-elements-expand-p ()
-  (html-element-edit-elements-sibling-next-p))
+(defun web-mode-edit-element-elements-expand-p ()
+  (web-mode-edit-element-elements-sibling-next-p))
 
-(defun html-element-edit-elements-expand ()
+(defun web-mode-edit-element-elements-expand ()
   (interactive)
-  (when (html-element-edit-elements-expand-p)
+  (when (web-mode-edit-element-elements-expand-p)
     (let ((content
            (concat
             (string-trim-left
@@ -193,62 +193,62 @@
                (set-mark (point))
                (web-mode-tag-next)
                (web-mode-element-end)
-               (html-element-edit-utils-kill-region)))
+               (web-mode-edit-element-utils-kill-region)))
             "\n")))
       (save-excursion
-        (html-element-edit-elements-end-inside)
+        (web-mode-edit-element-elements-end-inside)
         (web-mode-tag-beginning)
         (insert content)))))
 
-(defun html-element-edit-elements-expand-over-border ()
+(defun web-mode-edit-element-elements-expand-over-border ()
   (interactive)
   (save-excursion
-    (while (and (html-element-edit-elements-parent-p)
-                (not (html-element-edit-elements-expand-p)))
+    (while (and (web-mode-edit-element-elements-parent-p)
+                (not (web-mode-edit-element-elements-expand-p)))
       (web-mode-element-parent))
-    (html-element-edit-elements-expand)))
+    (web-mode-edit-element-elements-expand)))
 
-(defun html-element-edit-elements-contract-p ()
-  (html-element-edit-elements-child-p))
+(defun web-mode-edit-element-elements-contract-p ()
+  (web-mode-edit-element-elements-child-p))
 
-(defun html-element-edit-elements-contract ()
+(defun web-mode-edit-element-elements-contract ()
   (interactive)
-  (when (html-element-edit-elements-contract-p)
+  (when (web-mode-edit-element-elements-contract-p)
     (let ((content
            (save-excursion
-             (html-element-edit-elements-child-last)
+             (web-mode-edit-element-elements-child-last)
              (web-mode-element-beginning)
              (web-mode-tag-previous)
              (web-mode-tag-end)
              (set-mark (point))
              (web-mode-tag-next)
              (web-mode-element-end)
-             (html-element-edit-utils-kill-region))))
+             (web-mode-edit-element-utils-kill-region))))
 
       (save-excursion
         (web-mode-element-end)
-        (html-element-edit-elements-insert-direct-after content)))))
+        (web-mode-edit-element-elements-insert-direct-after content)))))
 
-(defun html-element-edit-elements-contract-over-border ()
+(defun web-mode-edit-element-elements-contract-over-border ()
   (interactive)
   (save-excursion
-    (while (and (html-element-edit-elements-parent-p)
-                (not (html-element-edit-elements-contract-p)))
+    (while (and (web-mode-edit-element-elements-parent-p)
+                (not (web-mode-edit-element-elements-contract-p)))
       (web-mode-element-parent))
-    (html-element-edit-elements-contract)))
+    (web-mode-edit-element-elements-contract)))
 
-(defun html-element-edit-elements-dissolve (&optional ARGS)
+(defun web-mode-edit-element-elements-dissolve (&optional ARGS)
   (interactive "p")
-  (when (html-element-edit-elements-parent-p)
+  (when (web-mode-edit-element-elements-parent-p)
     (save-excursion
       (web-mode-element-beginning)
       (web-mode-element-parent)
       (web-mode-element-vanish ARGS))))
 
-(defun html-element-edit-elements-raise (&optional ARGS)
+(defun web-mode-edit-element-elements-raise (&optional ARGS)
   (interactive "p")
-  (html-element-edit-elements-kill-siblings)
-  (html-element-edit-elements-dissolve ARGS))
+  (web-mode-edit-element-elements-kill-siblings)
+  (web-mode-edit-element-elements-dissolve ARGS))
 
-(provide 'html-element-edit-elements)
-;;; html-element-edit-elements.el ends here
+(provide 'web-mode-edit-element-elements)
+;;; web-mode-edit-element-elements.el ends here
