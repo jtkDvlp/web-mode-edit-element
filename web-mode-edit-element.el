@@ -34,7 +34,7 @@
 
 (define-minor-mode web-mode-edit-element-minor-mode
   "Minor mode to provide key-bindings for web-mode-edit-element functions"
-  nil " html-elemenet-edit" 'web-mode-edit-element-minor-mode-map)
+  nil " web-mode-edit-element" 'web-mode-edit-element-minor-mode-map)
 
 (let ((bindings
        '(;; General
