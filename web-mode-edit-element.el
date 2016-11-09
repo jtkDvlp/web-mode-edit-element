@@ -8,7 +8,7 @@
 ;; License: GNU General Public License >= 2
 ;; Distribution: This file is not part of Emacs
 ;; Keywords: languages convenience
-;; Package-Requires: ((web-mode "14"))
+;; Package-Requires: ((emacs "24.4") (web-mode "14"))
 
 ;;; Commentary:
 

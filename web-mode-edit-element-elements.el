@@ -10,6 +10,7 @@
 
 (require 'web-mode)
 (require 'web-mode-edit-element-utils)
+(require 'subr-x)
 
 ;; General
 (defun web-mode-edit-element-elements-end-inside ()
