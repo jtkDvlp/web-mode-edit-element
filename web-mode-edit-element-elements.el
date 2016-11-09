@@ -42,7 +42,7 @@
   (save-excursion
     (web-mode-edit-element-elements-end-inside)
     (web-mode-tag-next)
-    (web-mode-edit-element-elements-insert-direct-before)))
+    (web-mode-edit-element-elements-insert-direct-before content)))
 
 ;; Sibling
 (defun web-mode-edit-element-elements-sibling-previous-position ()
