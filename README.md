@@ -35,9 +35,9 @@ Shortcut | Command
 `C-M-<up>` | web-mode-element-content-select
 `C-M-<down>` | web-mode-element-vanish
 `C-k` | web-mode-element-kill
-`C-S-k` | web-mode-edit-element-elements-kill-siblings
+`C-K` | web-mode-edit-element-elements-kill-siblings
 `M-k` | web-mode-edit-element-elements-kill-siblings-previous
-`M-S-k` | web-mode-edit-element-elements-kill-siblings-next
+`M-K` | web-mode-edit-element-elements-kill-siblings-next
 **Attributes** |
 `C-S-<left>` | web-mode-attribute-previous
 `C-S-<right>` | web-mode-attribute-next
@@ -45,7 +45,7 @@ Shortcut | Command
 `C-M-S-<right>` | web-mode-attribute-transpose
 `C-M-S-<up>` | web-mode-attribute-beginning
 `C-M-S-<down>` | web-mode-edit-element-attributes-end-inside
-`C-M-S-k` | web-mode-attribute-kill
+`C-M-K` | web-mode-attribute-kill
 
 ## Appendix
 I´d be thankful to receive patches, comments and constructive criticism.
