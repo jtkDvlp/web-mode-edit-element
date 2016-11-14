@@ -6,6 +6,7 @@ It provides a few helper-functions for attribute- and element-handling based on 
 
 ## Getting started
 ### Get it
+- Via [![MELPA](http://melpa.org/packages/web-mode-edit-element-badge.svg)](http://melpa.org/#/web-mode-edit-element) or [![MELPA Stable](http://stable.melpa.org/packages/web-mode-edit-element-badge.svg)](http://stable.melpa.org/#/web-mode-edit-element)
 - Manually download it and [set up your load path](http://www.emacswiki.org/emacs/InstallingPackages).
 
 ### Usage
