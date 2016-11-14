@@ -1,4 +1,4 @@
-[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://img.shields.io/badge/License-GPL%20v2-blue.svg)[![MELPA](http://melpa.org/packages/web-mode-edit-element-badge.svg)](http://melpa.org/#/web-mode-edit-element)[![MELPA Stable](http://stable.melpa.org/packages/web-mode-edit-element-badge.svg)](http://stable.melpa.org/#/web-mode-edit-element)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://img.shields.io/badge/License-GPL%20v2-blue.svg) [![MELPA](http://melpa.org/packages/web-mode-edit-element-badge.svg)](http://melpa.org/#/web-mode-edit-element) [![MELPA Stable](http://stable.melpa.org/packages/web-mode-edit-element-badge.svg)](http://stable.melpa.org/#/web-mode-edit-element)
 # web-mode-edit-element
 "web-mode-edit-element" is a smart enhancement for the Emacs-Package [web-mode](https://github.com/fxbois/web-mode) inspired by the packages [ParEdit](https://www.emacswiki.org/emacs/ParEdit) and [Paxedit](https://github.com/promethial/paxedit).
 
