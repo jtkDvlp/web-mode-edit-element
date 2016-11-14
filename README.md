@@ -1,4 +1,5 @@
-# web-mode-edit-element [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://img.shields.io/badge/License-GPL%20v2-blue.svg)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://img.shields.io/badge/License-GPL%20v2-blue.svg)[![MELPA](http://melpa.org/packages/web-mode-edit-element-badge.svg)](http://melpa.org/#/web-mode-edit-element)[![MELPA Stable](http://stable.melpa.org/packages/web-mode-edit-element-badge.svg)](http://stable.melpa.org/#/web-mode-edit-element)
+# web-mode-edit-element
 "web-mode-edit-element" is a smart enhancement for the Emacs-Package [web-mode](https://github.com/fxbois/web-mode) inspired by the packages [ParEdit](https://www.emacswiki.org/emacs/ParEdit) and [Paxedit](https://github.com/promethial/paxedit).
 
 It provides a few helper-functions for attribute- and element-handling based on the functions given by [web-mode](https://github.com/fxbois/web-mode). Further more it provides functions for slurping, barfing, dissolving, raising ... elements inspired by [ParEdit](https://www.emacswiki.org/emacs/ParEdit) and [Paxedit](https://github.com/promethial/paxedit). Last but not least this package includes a minor mode to provide a keymap with default bindings using commands of [web-mode](https://github.com/fxbois/web-mode) and this package.
