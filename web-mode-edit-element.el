@@ -32,6 +32,7 @@
   (make-keymap)
   "web-mode-edit-element-minor-mode keymap")
 
+;;;###autoload
 (define-minor-mode web-mode-edit-element-minor-mode
   "Minor mode to provide key-bindings for web-mode-edit-element functions"
   nil " web-mode-edit-element" 'web-mode-edit-element-minor-mode-map)
