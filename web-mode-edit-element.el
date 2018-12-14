@@ -42,6 +42,8 @@
          ("C-(" web-mode-element-wrap)
          ("M-(" web-mode-element-rename)
 
+         ("C-M-SPC" web-mode-element-content-select)
+
          ;; Elements
          ("C-<left>" web-mode-element-previous)
          ("C-<right>" web-mode-element-next)
@@ -61,8 +63,8 @@
          ("M-<up>" web-mode-edit-element-elements-dissolve)
          ("M-<down>" web-mode-edit-element-elements-raise)
 
-         ("C-M-<up>" web-mode-element-content-select)
-         ("C-M-<down>" web-mode-element-vanish)
+         ("C-M-<up>" web-mode-element-vanish)
+         ("C-M-<down>" web-mode-edit-element-elements-sibling-next-or-parent)
 
          ("C-k" web-mode-element-kill)
          ("C-K" web-mode-edit-element-elements-kill-siblings)
