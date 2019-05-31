@@ -67,7 +67,7 @@
          ("C-M-<down>" web-mode-edit-element-elements-sibling-next-or-parent)
 
          ("C-k" web-mode-element-kill)
-         ("C-K" web-mode-edit-element-elements-kill-siblings)
+         ("C-S-k" web-mode-edit-element-elements-kill-siblings)
          ("M-k" web-mode-edit-element-elements-kill-siblings-previous)
          ("M-K" web-mode-edit-element-elements-kill-siblings-next)
 
