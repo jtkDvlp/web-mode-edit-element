@@ -2,7 +2,7 @@
 
 ;; Copyright 2016 Julian T. Knabenschuh
 
-;; Version: 2.2
+;; Version: 2.3
 ;; Author: Julian T. Knabenschuh <jtkdevelopments@gmail.com>
 ;; Homepage: https://github.com/jtkDvlp/web-mode-edit-element
 ;; License: GNU General Public License >= 2
